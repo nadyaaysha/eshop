@@ -32,7 +32,7 @@ public class ProductController {
     @GetMapping("/list")
     public String productListPage(Model model) {
         List<Product> allProduct = service.findAll();
-        model.addAttribute("product", allProduct);
+        model.addAttribute("products", allProduct);
         return "productList";
     }
 }
