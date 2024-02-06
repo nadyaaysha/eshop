@@ -29,9 +29,4 @@ public class ProductServiceImpl implements ProductService {
         return allProduct;
 
     }
-
-    @Override
-    public void delete(String productId) {
-        productRepository.delete(productId);
-    }
 }
