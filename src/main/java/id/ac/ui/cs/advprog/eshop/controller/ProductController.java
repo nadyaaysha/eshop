@@ -15,7 +15,6 @@ public class ProductController {
 
     @Autowired
     private ProductService service;
-    private Long productIdCounter = 1L;
 
     @GetMapping("/create")
     public String createProductPage(Model model) {
@@ -26,7 +25,6 @@ public class ProductController {
 
     @PostMapping("/create")
     public String createProductPost(@ModelAttribute Product product, Model model) {
-        product.setProductId(generateProductId());
         service.create(product);
         return "redirect:list";
     }
@@ -36,9 +34,5 @@ public class ProductController {
         List<Product> allProduct = service.findAll();
         model.addAttribute("products", allProduct);
         return "productList";
-    }
-
-    private String generateProductId() {
-        return String.valueOf(productIdCounter++);
     }
 }
