@@ -19,4 +19,16 @@ public class ProductRepository {
     public Iterator<Product> findAll() {
         return productData.iterator();
     }
+
+    public Product findById(String productId) {
+        return productData.stream()
+                .filter(product -> product.getProductId().equals(productId))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public void delete(String productId) {
+        Product product = findById(productId);
+        productData.remove(product);
+    }
 }
