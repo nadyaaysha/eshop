@@ -3,7 +3,7 @@
 ## **_Clean Code Principles_**
 
 ### 1. Meaningful Names
-Variable dan method names harus deskriptif and mengikuti standard conventions dan memiliki makna yang jelas akan fungsi atau kegunaannya. Contoh penerapan Meaningful Names yang saya lakukan yaitu, createProductPage, createProductPost, findAll, etc.
+Variable dan method names harus deskriptif and mengikuti standard conventions dan memiliki makna yang jelas akan fungsi atau kegunaannya. Contoh penerapan Meaningful Names yang saya lakukan yaitu, `createProductPage`, `createProductPost`, `findAll`, etc.
 
 ### 2. Function
 Setiap fungsi (methods) memiliki tugasnya masing-masing. Saya mencoba untuk membuat fungsi-fungsinya sesingkat dan sepadat mungkin. Berikut contoh-contohnya:
@@ -31,9 +31,9 @@ Saya berusaha membuat Comment sesingkat dan seinformatif mungkin, berikut salah 
 ### Objects and Data Structure
 Perlu adanya separasi antara objects dan data structures.
 
--  Objects: Product class berisi pembuatan product ID yang unik dan data (product name, quantity).
+-  Objects: `Product` class berisi pembuatan product ID yang unik dan data (product name, quantity).
 
--  Data Structures: ProductRepository class berguna untuk menyimpan dan mengakses data product. Ada sekumpulan method seperti Create, Update, dan Delete tanpa mengekspos in-memory list.
+-  Data Structures: `ProductRepository` class berguna untuk menyimpan dan mengakses data product. Ada sekumpulan method seperti Create, Update, dan Delete tanpa mengekspos in-memory list.
 
 ### 5. Error Handling
 Saya belum menerapkan Error Handling yang terlalu kompleks, namun saya memiliki method findById yang akan me-return null jika product tidak ditemukan.
@@ -61,3 +61,14 @@ Sejujurnya, aku merasa canggih. Pada tahun pertama saya mengoding, saya hanya me
 :    Menurut saya belum tentu. Bahkan dengan 100% code coverage pun, masih terdapat kemungkinan gap-gap di test coverage, seperti untested error atau environmental dependencies. Code coverage juga tidak menjamin kualitas test-testnya, seperti mendeteksi corner cases.
 
 ## 2. Functional Test
+
+A functional test suite that verifies the number of items in the product list (verifyNumberOfItems).
+
+### a. What do you think about the cleanliness of the code of the new functional test suite?
+:    Karena functional test verifyNumberOfItems memiliki struktur yang kurang lebih sama dengan CreateProductFunctionalTest, maka secara cleanliness code akan terlihat singkat, to-the-point, dan mudah dibaca.
+
+### b. Will the new code reduce the code quality?
+:    Menurut saya tidak akan mengurangi kualitas. Karena test seperti ini juga perlu dilakukan jika Developer ingin meng-cover semua grounds dalam hal test-test untuk programnya.
+
+### c. Identify the potential clean code issues, explain the reasons, and suggest possible improvements to make the code cleaner!
+:    Berdasarkan dengan kecepatan loading website, mungkin akan perlu explicit waiting untuk memastikan semua data dalam productList telah terhitung. Hal ini akan menjamin reability agar data yang terhitung tidak salah atau data tidak error.
