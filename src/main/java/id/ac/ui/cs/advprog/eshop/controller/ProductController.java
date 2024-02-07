@@ -23,6 +23,9 @@ public class ProductController {
         return "createProduct";
     }
 
+    /**
+     Handle HTTP POST request untuk create product.
+     */
     @PostMapping("/create")
     public String createProductPost(@ModelAttribute Product product, Model model) {
         service.create(product);
@@ -43,6 +46,9 @@ public class ProductController {
         return "editProduct";
     }
 
+    /**
+     Handle HTTP POST request untuk edit product.
+     */
     @PostMapping("/edit/{productId}")
     public String editProductPost(@PathVariable String productId, @ModelAttribute Product updatedProduct) {
         service.update(productId, updatedProduct);

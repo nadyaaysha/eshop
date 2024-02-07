@@ -20,6 +20,9 @@ public class ProductRepository {
         return productData.iterator();
     }
 
+    /**
+    Cari Id, return null jika tidak ada
+     */
     public Product findById(String productId) {
         return productData.stream()
                 .filter(product -> product.getProductId().equals(productId))
@@ -27,6 +30,10 @@ public class ProductRepository {
                 .orElse(null);
     }
 
+    /**
+     * Update/edit product dari repository berdasarkan Id.
+     * Note: Asumsi product ada.
+     */
     public void update(String productId, Product updatedProduct) {
         for (int i = 0; i < productData.size(); i++) {
             Product product = productData.get(i);
@@ -38,6 +45,10 @@ public class ProductRepository {
         }
     }
 
+    /**
+     * Delete product dari repository berdasarkan Id.
+     * Note: Asumsi product ada.
+     */
     public void delete(String productId) {
         Product product = findById(productId);
         productData.remove(product);
