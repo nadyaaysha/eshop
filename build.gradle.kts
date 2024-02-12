@@ -5,6 +5,7 @@ val junitJupiterVersion = "5.9.1"
 
 plugins {
     java
+    jacoco
     id("org.springframework.boot") version "3.2.2"
     id("io.spring.dependency-management") version "1.1.4"
 }
@@ -61,4 +62,17 @@ tasks.register<Test>("functionalTest") {
 
 tasks.withType<Test>().configureEach() {
     useJUnitPlatform()
+}
+
+tasks.test {
+    // Exclude functional test from being run by test task
+    filter {
+        exclude("**/*FunctionalTest.*")
+    }
+    // Ensue jacocoReport is generated after running test task
+    finalizedBy("jacocoTestReport")
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
 }
