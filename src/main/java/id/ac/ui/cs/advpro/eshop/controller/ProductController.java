@@ -11,6 +11,9 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/product")
+/**
+ * Handles operations for creating, listing, and editing products in the application.
+ */
 public class ProductController {
     @Autowired
     private ProductService service;
@@ -33,5 +36,18 @@ public class ProductController {
         List<Product> allProducts = service.findAll();
         model.addAttribute("products", allProducts);
         return "ProductList";
+    }
+    
+    @GetMapping("/edit/{productId}")
+    public String editProductPage(@PathVariable("productId") String productId, Model model) {
+        Product product = service.findById(productId);
+        model.addAttribute("product", product);
+        return "EditProduct";
+    }
+
+    @PostMapping("/edit")
+    public String editProductPost(@ModelAttribute("product") Product product) {
+        service.updateProduct(product);
+        return "redirect:list";
     }
 }
