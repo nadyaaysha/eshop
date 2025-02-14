@@ -181,9 +181,18 @@ class ProductRepositoryTest {
         product.setProductQuantity(100);
         productRepository.create(product);
 
-        Product productDeleted = productRepository.findById(product.getProductId());
+        Product productDeleted = productRepository.deleteProduct(product.getProductId());
         assertEquals(product.getProductId(), productDeleted.getProductId());
         assertEquals(product.getProductName(), productDeleted.getProductName());
         assertEquals(product.getProductQuantity(), productDeleted.getProductQuantity());
+
+        Product productDeletedIfSearched = productRepository.findById(product.getProductId());
+        assertNull(productDeletedIfSearched);
+    }
+
+    @Test
+    void testDeleteProductIfProductNotFound() {
+        Product productDeleted = productRepository.deleteProduct("non-existent-id");
+        assertNull(productDeleted);
     }
 }
