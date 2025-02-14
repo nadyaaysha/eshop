@@ -35,6 +35,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product updateProduct(Product updatedProduct) {
-        productRepository.updateProduct(updatedProduct);
+        return productRepository.updateProduct(updatedProduct);
     }
 }
