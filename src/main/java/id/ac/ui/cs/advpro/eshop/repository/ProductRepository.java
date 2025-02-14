@@ -30,12 +30,13 @@ public class ProductRepository {
         return null;
     }
 
-    public void updateProduct(Product updatedProduct) {
+    public Product updateProduct(Product updatedProduct) {
         for (Product product : productData) {
             if (product.getProductId().equals(updatedProduct.getProductId())) {
                 product.setProductName(updatedProduct.getProductName());
                 product.setProductQuantity(updatedProduct.getProductQuantity());
             }
         }
+        return updatedProduct;
     }
 }
