@@ -30,7 +30,7 @@ public class ProductRepository {
         return null;
     }
 
-    public void updateProduct(Product updatedProduct) {
+    public Product updateProduct(Product updatedProduct) {
         for (Product product : productData) {
             if (product.getProductId().equals(updatedProduct.getProductId())) {
                 if (updatedProduct.getProductQuantity() <= 0) {
@@ -40,6 +40,7 @@ public class ProductRepository {
                 product.setProductQuantity(updatedProduct.getProductQuantity());
             }
         }
+        return updatedProduct;
     }
 
     public void deleteProduct(String productId) {
