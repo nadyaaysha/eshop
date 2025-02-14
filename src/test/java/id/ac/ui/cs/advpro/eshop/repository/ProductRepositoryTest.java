@@ -173,4 +173,17 @@ class ProductRepositoryTest {
         Product editedProduct = productRepository.findById("non-existent-id");
         assertNull(editedProduct);
     }
+
+    @Test
+    void testDeleteProduct() {
+        Product product = new Product();
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        Product productDeleted = productRepository.findById(product.getProductId());
+        assertEquals(product.getProductId(), productDeleted.getProductId());
+        assertEquals(product.getProductName(), productDeleted.getProductName());
+        assertEquals(product.getProductQuantity(), productDeleted.getProductQuantity());
+    }
 }
