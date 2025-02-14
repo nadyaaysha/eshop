@@ -30,16 +30,21 @@ public class ProductRepository {
         return null;
     }
 
-    public void updateProduct(Product updatedProduct) {
+    public Product updateProduct(Product updatedProduct) {
         for (Product product : productData) {
             if (product.getProductId().equals(updatedProduct.getProductId())) {
                 product.setProductName(updatedProduct.getProductName());
                 product.setProductQuantity(updatedProduct.getProductQuantity());
             }
         }
+        return updatedProduct;
     }
 
-    public boolean deleteProduct(String productId) {
-        return productData.removeIf(product -> product.getProductId().equals(productId));
+    public Product deleteProduct(String productId) {
+        Product deletedProduct = findById(productId);
+        if (deletedProduct != null) {
+            productData.removeIf(product -> product.getProductId().equals(productId));
+        }
+        return deletedProduct;
     }
 }
