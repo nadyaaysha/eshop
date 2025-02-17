@@ -38,9 +38,10 @@ public class ProductRepository {
                 }
                 product.setProductName(updatedProduct.getProductName());
                 product.setProductQuantity(updatedProduct.getProductQuantity());
+                return updatedProduct;
             }
         }
-        return updatedProduct;
+        return null;
     }
 
     public Product deleteProduct(String productId) {

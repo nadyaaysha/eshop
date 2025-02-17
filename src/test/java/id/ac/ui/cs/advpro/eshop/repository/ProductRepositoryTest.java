@@ -84,8 +84,10 @@ class ProductRepositoryTest {
         product.setProductName("Sampo Cap Bambang");
         product.setProductQuantity(100);
         productRepository.create(product);
-    }
 
+        Product productNotExist = productRepository.findById("999");
+        assertNull(productNotExist);
+    }
     @Test
     void testEditProduct() {
         Product product = new Product();
@@ -159,6 +161,15 @@ class ProductRepositoryTest {
         product.setProductName("Sampo Cap Bambang");
         product.setProductQuantity(100);
         Product createdProduct = productRepository.create(product);
+
+        Product productUpdated = new Product();
+        productUpdated.setProductId("999");
+        productUpdated.setProductName("Sampo Cap Budi");
+        productUpdated.setProductQuantity(200);
+        productRepository.updateProduct(productUpdated);
+
+        Product editedProduct = productRepository.findById(productUpdated.getProductId());
+        assertNull(editedProduct);
     }
 
     @Test
