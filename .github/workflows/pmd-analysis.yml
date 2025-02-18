@@ -25,7 +25,7 @@ jobs:
           unzip pmd-bin-7.0.0.zip
           echo "$(pwd)/pmd-bin-7.0.0/bin" >> $GITHUB_PATH
 
-
       - name: Run PMD Analysis
         run: |
-          pmd-bin-7.0.0-rc4/bin/run.sh pmd -d ./src -R rulesets/java/quickstart.xml -f text
+          export PMD_JAVA_OPTS=--enable-preview
+          ./pmd-bin-7.0.0/bin/pmd check --use-version java-21-preview -d ./src -R rulesets/java/quickstart.xml -f text
