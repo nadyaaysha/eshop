@@ -6,7 +6,17 @@ Link to my Deployed Web (Koyeb) : https://major-sharl-csui-814ce7e9.koyeb.app/
 
 # Modul 2
 
+1. I removed unnecessary public modifiers in ProductService.
 
+_Before_
+
+![image](https://github.com/user-attachments/assets/3aec65de-8223-4570-a054-5eb7613a4f97)
+
+_After_
+
+![image](https://github.com/user-attachments/assets/c06177cc-eca1-40d2-b7b2-aa6e50b5d95d)
+
+2. For this module, I've implemented and improved tests and code coverage and not to mention workflows for deployment. I've done the tutorial to automatically do an action everytime there's a push from local. I've also successfully deployed my simple website with Koyeb. So everytime there is changes commited, the website is auto-deployed without any manual checking. 
 
 # Modul 1
 
