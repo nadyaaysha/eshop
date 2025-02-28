@@ -20,7 +20,7 @@ public class CarController {
     @GetMapping("/createCar")
     public String createCarPage(Model model) {
         model.addAttribute("car", new Car());
-        return "createCar";
+        return "CreateCar";
     }
 
     @PostMapping("/createCar")
@@ -32,13 +32,13 @@ public class CarController {
     @GetMapping("/listCar")
     public String carListPage(Model model) {
         model.addAttribute("cars", carService.findAll());
-        return "carList";
+        return "CarList";
     }
 
     @GetMapping("/editCar/{carId}")
     public String editCarPage(@PathVariable String carId, Model model) {
         model.addAttribute("car", carService.findById(carId));
-        return "editCar";
+        return "EditCar";
     }
 
     @PostMapping("/editCar")
