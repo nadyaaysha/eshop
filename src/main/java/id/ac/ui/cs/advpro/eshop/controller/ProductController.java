@@ -2,6 +2,7 @@ package id.ac.ui.cs.advpro.eshop.controller;
 import id.ac.ui.cs.advpro.eshop.model.Car;
 import id.ac.ui.cs.advpro.eshop.model.Product;
 import id.ac.ui.cs.advpro.eshop.service.CarService;
+import id.ac.ui.cs.advpro.eshop.service.CarServiceImpl;
 import id.ac.ui.cs.advpro.eshop.service.ProductService;
 
 
@@ -64,16 +65,16 @@ public class ProductController {
 @RequestMapping("/car")
 class CarController extends ProductController {
     @Autowired
-    private CarService carService;
+    private CarServiceImpl carService;
 
     @GetMapping("/createCar")
     public String createCarPage(Model model) {
         Car car = new Car();
         model.addAttribute("car", car);
-        return "CreateCar";
+        return "createCar";
     }
 
-    @PostMapping
+    @PostMapping("/createCar")
     public String createCarPost(@ModelAttribute Car car, Model model) {
         carService.create(car);
         return "redirect:listCar";
@@ -83,14 +84,14 @@ class CarController extends ProductController {
     public String carListPage(Model model) {
         List<Car> allCars = carService.findAll();
         model.addAttribute("cars", allCars);
-        return "CarList";
+        return "carList";
     }
 
     @GetMapping("/editCar/{carId}")
     public String editCarPage(@PathVariable String carId, Model model) {
         Car car = carService.findById(carId);
         model.addAttribute("car", car);
-        return "EditCar";
+        return "editCar";
     }
 
     @PostMapping("/editCar")
@@ -101,8 +102,8 @@ class CarController extends ProductController {
     }
 
     @PostMapping("/deleteCar")
-    public String deleteCar(@ModelAttribute("carId") String carId) {
-        carService.delete(carId);
+    public String deleteCar(@RequestParam("carId") String carId) {
+        carService.deleteCarById(carId);
         return "redirect:listCar";
     }
 }
