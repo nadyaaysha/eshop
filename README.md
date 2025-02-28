@@ -4,6 +4,34 @@ _Disclaimer: I wrote my Reflection in English, I hope that is okay :)!_
 
 Link to my Deployed Web (Koyeb) : https://major-sharl-csui-814ce7e9.koyeb.app/
 
+# Modul 3
+
+1. Here are the SOLID Principles I've applied to my project.
+
+    - **SRP**
+
+      I've seperated each class to only have one purpose each, CarRepository for handling data persistence, CarServiceImpl for handling business logic, and CarController for handling HTTP requests.
+
+    - **OCP**
+
+      I've applied OCP in CarService because entities should be open for extension but closed for modification.
+
+    - **LSP**
+
+      I've applied LSP because derived classes should be substitutable for their base classes. I fixed this by seperating CarController because it should not extend ProductController unless ProductController provides common logic related to all products.
+
+    - **ISP**
+
+      I've applied ISP by creating a seperate interface (CarService) and deleting unnecessary public modifiers. 
+
+    - **DIP**
+    
+      I've applied this by implementing CarServiceImpl to depend on CarService interface rather than being its own concrete class.
+   
+2. Explain the advantages of applying SOLID principles to your project with examples.
+   
+3. Explain the disadvantages of not applying SOLID principles to your project with examples. 
+
 # Modul 2
 
 1. I removed unnecessary public modifiers in ProductService.
