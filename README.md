@@ -6,31 +6,27 @@ Link to my Deployed Web (Koyeb) : https://major-sharl-csui-814ce7e9.koyeb.app/
 
 # Modul 3
 
-1. Here are the SOLID Principles I've applied to my project.
+Here are the SOLID Principles I've applied to my project. The advantages of applying them and disadvantages of not, complete with examples.
 
     - **SRP**
 
-      I've seperated each class to only have one purpose each, CarRepository for handling data persistence, CarServiceImpl for handling business logic, and CarController for handling HTTP requests.
+      I've seperated each class to only have one purpose each, CarRepository for handling data persistence, CarServiceImpl for handling business logic, and CarController for handling HTTP requests. The advantage of this is, code will be easier to maintain and modify. Without SRP, imagine CarServiceImpl handling both business logic and HTTP requests. If I changed how the service validates car data, I'd be at risk breaking the controller too, making debugging harder (For Me).
 
     - **OCP**
 
-      I've applied OCP in CarService because entities should be open for extension but closed for modification.
+      I've applied OCP in CarService because entities should be open for extension but closed for modification. The advantage is I can add new features without modifying existing code. Without OCP, if I directly modified CarServiceImpl to add caching, every change would risk breaking existing functionality.
 
     - **LSP**
 
-      I've applied LSP because derived classes should be substitutable for their base classes. I fixed this by seperating CarController because it should not extend ProductController unless ProductController provides common logic related to all products.
+      I've applied LSP because derived classes should be substitutable for their base classes. I fixed this by seperating CarController because it should not extend ProductController unless ProductController provides common logic related to all products. The advantageof this is I can replace derived classes without breaking the system. Without it, if ProductController had methods that did not apply to cars, CarController would inherit unnecessary methods, leading to unexpected behavior.
 
     - **ISP**
 
-      I've applied ISP by creating a seperate interface (CarService) and deleting unnecessary public modifiers. 
+      I've applied ISP by creating a seperate interface (CarService) and deleting unnecessary public modifiers. The clear advantage of this is that clients (classes) only depend on the methods they need. Without ISP, if CarService had too many methods, classes implementing it would have empty or useless method implementations.
 
     - **DIP**
     
-      I've applied this by implementing CarServiceImpl to depend on CarService interface rather than being its own concrete class.
-   
-2. Explain the advantages of applying SOLID principles to your project with examples.
-   
-3. Explain the disadvantages of not applying SOLID principles to your project with examples. 
+      I've applied this by implementing CarServiceImpl to depend on CarService interface rather than being its own concrete class. The advantage of this is, high-level modules don’t depend on low-level modules. Without it, changing the database would require modifying multiple files, increasing the risk of bugs.
 
 # Modul 2
 
